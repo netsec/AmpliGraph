@@ -104,11 +104,11 @@ def run_single_exp(config, dataset, model):
         logging.debug("Fit with early stopping...")
         model.fit(X["train"], True,
                   {
-                      'x_valid': X['valid'][::10],
-                      'criteria': 'mrr',
                       'x_filter': filter,
+                      'x_valid': X['valid'][1::2],
+                      'criteria': 'mrr',
                       'stop_interval': 2,
-                      'burn_in': 0,
+                      'burn_in': 200,
                       'check_interval': 100
                   })
 
